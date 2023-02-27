@@ -1,5 +1,5 @@
-import React, { useRef } from "react"
-import "./styles.css"
+import React, { useRef } from "react";
+import "./styles.css";
 
 interface Props {
   todo: string;
@@ -7,26 +7,24 @@ interface Props {
   handleAdd: (e: React.FormEvent) => void;
 }
 
-export const InputField: React.FC<Props> = ({
-  todo,
-  setTodo,
-  handleAdd,
-}: Props) => {
+export const InputField: React.FC<Props> = ({ todo, setTodo, handleAdd }) => {
   // todo, setTodo will have an error if not instantiate the type of variable due to TS
   // do {todo, setTodo}: Props
   const inputRef = useRef<HTMLInputElement>(null);
   return (
     <div>
-      <form className="input" onSubmit={(e) => 
-        {
-          handleAdd(e)
-          inputRef.current?.blur()
-        }}>
+      <form
+        className="input"
+        onSubmit={(e) => {
+          handleAdd(e);
+          inputRef.current?.blur();
+        }}
+      >
         <input
           ref={inputRef}
-          type="input"
+          type="text"
           placeholder="Enter a task"
-          className="input_box"
+          className="input__box"
           value={todo}
           onChange={(e) => setTodo(e.target.value)}
         />
